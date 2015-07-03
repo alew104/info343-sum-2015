@@ -72,11 +72,16 @@ $(function(){
         newTask.set('user', currentUser);
         newTask.set('done', false);
 
+        var addButton = newTaskForm.find(':submit');
+        addButton.prop('disabled', true).addClass('working');
+
         newTask.save().then(function(){
             tasks.add(newTask);
             newTitleInput.val('');
+            addButton.prop('disabled',false).removeClass('working');
         }, function(err){
             showError(err);
+            addButton.prop('disabled',false).removeClass('working');
         });
     });
 
