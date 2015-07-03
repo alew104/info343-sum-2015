@@ -79,4 +79,8 @@ $(function(){
             showError(err);
         });
     });
+
+    $('.btn-purge').click(function(){
+        Parse.Object.destroyAll(tasks.getCompleted());
+    });
 });
